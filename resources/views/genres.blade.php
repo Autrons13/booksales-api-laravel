@@ -27,5 +27,6 @@
     </table>
 
     <a href="/authors">Ke Authors</a>
+    <a href="/books">Ke books</a>
 </body>
 </html>

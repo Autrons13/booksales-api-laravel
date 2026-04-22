@@ -28,5 +28,7 @@
 
    
     <a href="/genres">Ke Genres</a>
+    <a href="/books">Ke books</a>
+    
 </body>
 </html>
