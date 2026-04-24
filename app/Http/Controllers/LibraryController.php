@@ -11,19 +11,19 @@ class LibraryController extends Controller
 {
    public function genres()
     {
-        $genres = Genre::all();
-        return view('genres', compact('genres'));
+        $genres = \App\Models\Genre::all();
+        return response()->json($genres);
     }
 
     public function authors()
     {
-        $authors = Author::all();
-        return view('authors', compact('authors'));
+        $authors = \App\Models\Author::all();
+        return response()->json($authors);
     }
 
      public function books()
      {
-        $books = Book::with('author')->get();
-        return view('books', compact('books'));
+        $books = \App\Models\Book::with('author')->get();
+        return response()->json($books);
      }
 }
