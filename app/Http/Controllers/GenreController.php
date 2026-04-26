@@ -18,6 +18,17 @@ class GenreController extends Controller
         ]);
     }
 
+    public function show($id)
+    {
+        $genre = Genre::find($id);
+        if (!$genre) {
+            return response()->json([
+                'message' => 'Data Genre tidak ditemukan'
+            ], 404);
+        }
+        return response()->json($genre);
+    }
+
     public function store(Request $request)
     {
 
@@ -43,5 +54,40 @@ class GenreController extends Controller
             'message' => 'Membuat Genre',
             'data' => $genre
         ], 201);
+    }
+
+      public function update(Request $request, $id)
+    {
+        $genre = Genre::find($id);
+
+        if (!$genre) {
+            return response()->json([
+                'message' => 'Genre tidak ditemukan'
+            ], 404);
+        }
+
+        $genre->update($request->all());
+
+        return response()->json([
+            'message' => 'Genre berhasil diupdate',
+            'data' => $genre
+        ]);
+    }
+
+    public function destroy($id)
+    {
+        $genre = Genre::find($id);
+
+        if (!$genre) {
+            return response()->json([
+                'message' => 'Genre tidak ditemukan'
+            ], 404);
+        }
+
+        $genre->delete();
+
+        return response()->json([
+            'message' => 'Genre berhasil dihapus'
+        ]);
     }
 }
