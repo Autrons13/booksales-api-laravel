@@ -4,6 +4,9 @@ namespace App\Models;
 
 class Genre
 {
+
+     protected $fillable = ['id', 'name', 'description'];
+
     public static function all()
     {
         return [
