@@ -2,17 +2,20 @@
 
 namespace App\Http\Middleware;
 
-namespace App\Http\Middleware;
-
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminMiddleware
+class CustomerMiddleware
 {
+    /**
+     * Handle an incoming request.
+     *
+     * @param  Closure(Request): (Response)  $next
+     */
     public function handle(Request $request, Closure $next): Response
     {
-        $user = auth('api')->user();
+         $user = auth('api')->user();
 
         if (!$user) {
             return response()->json([
@@ -20,9 +23,9 @@ class AdminMiddleware
             ], 401);
         }
 
-        if ($user->role !== 'admin') {
+         if ($user->role !== 'customer') {
             return response()->json([
-                'message' => 'Akses hanya untuk admin'
+                'message' => 'Akses hanya untuk customer'
             ], 403);
         }
 
